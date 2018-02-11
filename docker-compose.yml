@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  web:
+    environment:
+      POSTGRES_DB: auth_dev
+      POSTGRES_USER: auth
+      POSTGRES_PASSWORD: auth123
+      POSTGRES_HOST: postgres
+    image: nathamanath/auth_demo:latest
+    ports:
+      - 4000:4000
+
+  postgres:
+    environment:
+      POSTGRES_DB: auth_dev
+      POSTGRES_USER: auth
+      POSTGRES_PASSWORD: auth123
+    image: postgres:10.1
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data: {}
