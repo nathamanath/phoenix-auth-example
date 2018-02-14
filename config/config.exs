@@ -24,7 +24,10 @@ config :logger, :console,
 
 config :auth, Auth.Guardian,
   issuer: "Auth",
-  secret_key: "use mix phx.gen.secret"
+  secret_key: "use mix phx.gen.secret",
+  permissions: %{
+    default: [:read_users, :write_users]
+  }
 
 config :ueberauth, Ueberauth,
   base_path: "/api/auth",
@@ -39,9 +42,9 @@ config :ueberauth, Ueberauth,
   ]
 
 # Configure the authentication plug pipeline
-config :auth, Auth.Plugs.AuthAccessPipeline,
+config :auth, AuthWeb.Plug.AuthAccessPipeline,
   module: Auth.Guardian,
-  error_handler: Auth.Plug.AuthErrorHandler
+  error_handler: AuthWeb.Plug.AuthErrorHandler
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

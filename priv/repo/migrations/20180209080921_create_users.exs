@@ -5,7 +5,7 @@ defmodule Auth.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :username, :string
       add :hashed_password, :string
-      add :permissions, {:array, :string}
+      add :permissions, :map
 
       timestamps()
     end

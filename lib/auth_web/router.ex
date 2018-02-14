@@ -14,7 +14,7 @@ defmodule AuthWeb.Router do
   end
 
   pipeline :authenticated do
-    plug OneplaceWeb.Plug.AuthAccessPipeline
+    plug AuthWeb.Plug.AuthAccessPipeline
   end
 
   scope "/", AuthWeb do

@@ -1,4 +1,4 @@
-defmodule Auth.Plug.AuthErrorHandler do
+defmodule AuthWeb.Plug.AuthErrorHandler do
   import Plug.Conn
   import Phoenix.Controller, only: [json: 2]
 

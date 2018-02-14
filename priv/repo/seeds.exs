@@ -10,20 +10,20 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-{:ok, user} = Auth.Accounts.create_user(%{
+{:ok, _user} = Auth.Accounts.create_user(%{
   username: "writer",
-  password: "opensaysme",
-  permissions: ["read_users", "write_users"]
+  password: "qweqweqwe",
+  permissions: %{default: [:read_users, :write_users]}
 })
 
-{:ok, user} = Auth.Accounts.create_user(%{
+{:ok, _user} = Auth.Accounts.create_user(%{
   username: "reader",
-  password: "opensaysme",
-  permissions: ["read_users"]
+  password: "qweqweqwe",
+  permissions: %{default: [:read_users]}
 })
 
-{:ok, user} = Auth.Accounts.create_user(%{
+{:ok, _user} = Auth.Accounts.create_user(%{
   username: "rubbish",
-  password: "opensaysme",
-  permissions: []
+  password: "qweqweqwe",
+  permissions: %{default: []}
 })

@@ -1,11 +1,8 @@
 defmodule Auth.Guardian do
   @moduledoc """
-  Integration with Ueberauth.Guardian
+  Integration with Guardian
   """
-  use Guardian, otp_app: :auth,
-    permissions: %{
-      default: [:read_users, :write_users]
-    }
+  use Guardian, otp_app: :auth
 
   use Guardian.Permissions.Bitwise
 

@@ -3,11 +3,10 @@ defmodule Auth.Accounts.User do
   import Ecto.Changeset
   alias Auth.Accounts.User
 
-
   schema "users" do
     field :hashed_password, :string
     field :username, :string
-    field :permissions, {:array, :string}
+    field :permissions, :map
 
     field :password, :string, virtual: true
 
