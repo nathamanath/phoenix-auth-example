@@ -77,7 +77,7 @@ CREATE TABLE users (
     id bigint NOT NULL,
     username character varying(255),
     hashed_password character varying(255),
-    permissions character varying(255)[],
+    permissions jsonb,
     inserted_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -114,7 +114,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 --
 
 COPY schema_migrations (version, inserted_at) FROM stdin;
-20180209080921	2018-02-11 18:41:44.517867
+20180209080921	2018-02-14 00:16:15.558221
 \.
 
 
@@ -123,9 +123,8 @@ COPY schema_migrations (version, inserted_at) FROM stdin;
 --
 
 COPY users (id, username, hashed_password, permissions, inserted_at, updated_at) FROM stdin;
-1	writer	$2b$12$3wEIZnbtCHQ6M1t48GSSTeTg2OAmxI5n7ufd/EaqhRcFRrhztwCy.	{read_users,write_users}	2018-02-11 18:41:44.888909	2018-02-11 18:41:44.888919
-2	reader	$2b$12$kRJ4Qv4xnkuT5nQ3A.k0gOSE0URKLcq7/J1oe8OXl3FJdjVycsshq	{read_users}	2018-02-11 18:41:45.125935	2018-02-11 18:41:45.125944
-3	rubbish	$2b$12$Np21THGMHf1WrvejpO2FIuWC4oAq0p1ypAfE1NEHS3Dlekziw8I1O	{}	2018-02-11 18:41:45.350477	2018-02-11 18:41:45.350484
+2	reader	$2b$12$hSmjBBZEckmqQvOUHtusIeNYnScKYUICzKoKQyftxAKUsR0CFyo6m	{"default": ["read_users"]}	2018-02-14 00:16:16.161736	2018-02-14 00:16:16.161745
+3	rubbish	$2b$12$JM9gawYnv27eIlVqX7zkXuCYm1zzrg3x9kkAcWL/52RWE6Y4648Jy	{"default": []}	2018-02-14 00:16:16.389516	2018-02-14 00:16:16.389524
 \.
 
 
