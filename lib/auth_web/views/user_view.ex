@@ -11,8 +11,9 @@ defmodule AuthWeb.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id,
-      username: user.username,
-      hashed_password: user.hashed_password}
+    %{
+      id: user.id,
+      username: user.username
+    }
   end
 end
